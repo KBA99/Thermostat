@@ -11,6 +11,24 @@ describe('Thermostat', function(){
     expect(thermostat.getCurrentTemperature()).toEqual(20);
   });
 
+  describe('Energy usage indicator', function() {
+    it('returns low-usage when temperature is under 18', function() {
+      thermostat.temperature = 17;
+      expect(thermostat.energyUsageBand()).toEqual("low-usage")
+    });
+
+    it('returns medium-usage when temperature is 18-25 (inclusive)', function() {
+      thermostat.temperature = 21;
+      expect(thermostat.energyUsageBand()).toEqual("medium-usage")
+    });
+
+    it('returns high-usage when temperature is over 25', function() {
+      thermostat.powerSavingModeOff();
+      thermostat.temperature = 26;
+      expect(thermostat.energyUsageBand()).toEqual("high-usage")
+    });
+  });
+
   describe('Controlling the temperature', function() {
     it('can increase the temperature',function(){
       thermostat.up();
@@ -48,8 +66,26 @@ describe('Thermostat', function(){
         expect(thermostat.isPowerSavingMode()).toBe(true);
       });
 
+      it('can be turned off', function() {
+        thermostat.powerSavingModeOff();
+        expect(thermostat.powerSavingMode).toBe(false);
+      });
+
+      it('can be turned back on again', function() {
+        thermostat.powerSavingModeOff();
+        thermostat.powerSavingModeOn();
+        expect(thermostat.powerSavingMode).toBe(true);
+      });
+
     });
 
+    describe('Reset button', function() {
+      it('resets temperature to Default (currently 20)', function() {
+        thermostat.up();
+        thermostat.resetTemperature();
+        expect(thermostat.temperature).toEqual(thermostat.DEFAULT_TEMPERATURE);
+      });
+    });
   });
 
 });

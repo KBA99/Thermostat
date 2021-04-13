@@ -24,5 +24,18 @@ So that I can save power
 The maximum temperature is 25 degrees when power saving is on
 
 
-Power saving as a boolean - false - constructor
-method to turn on or off power saving
+<!-- Power saving mode is on by default but it can also be turned off -->
+As a user of the termostat
+So that I don't accidentally overuse energy
+Power saving mode is on by default but it can also be turned off
+
+<!-- You can reset the temperature to 20 with a reset function -->
+As a user of the thermostat
+To get quickly back to a convenient temperature
+You can reset the temperature to 20 with a reset function
+
+<!-- You can ask about the thermostat's current energy usage -->
+
+As a user of the thermostat
+To get a quick indication of how much energy I'm using
+You can ask about the thermostat's current energy usage (in bands)
