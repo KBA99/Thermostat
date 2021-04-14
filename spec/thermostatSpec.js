@@ -57,10 +57,10 @@ describe('Thermostat', function(){
     it('can have a maximum temperature of 32', function() {
       thermostat.powerSavingModeOff(); 
       for (let i = 0; i < 13; i++) {
-         thermostat.up();
-       }
-       expect(thermostat.getCurrentTemperature()).toEqual(32);
-     });
+        thermostat.up();
+      }
+      expect(thermostat.getCurrentTemperature()).toEqual(32);
+    });
 
     describe('Power saving mode', function() {
       it('starts with power saving mode on', function() {

@@ -1,16 +1,44 @@
 let thermostat = new Thermostat()
 
-document.addEventListener('DOMContentLoaded', function(event) {
+document.addEventListener('DOMContentLoaded', () => {
   // let temperature = document.querySelector('#temp').innerHTML("Hi")
-  document.getElementById('display').innerHTML = `<p>${thermostat.temperature}</p>`
+  document.getElementById('temp').innerText = `${thermostat.temperature}°C`
+  document.getElementById('psm-status').innerText = `${thermostat.powerSavingMode}`
+  document.getElementById('energy-usage').innerText = `${thermostat.energyUsageBand()}`
 
+  // Event listener to update temperature after clicking
+  document.body.addEventListener('click', () => {
+    document.getElementById('temp').innerText = `${thermostat.temperature}°C`;
+    document.getElementById('psm-status').innerText = `${thermostat.powerSavingMode}`
+    document.getElementById('energy-usage').innerText = `${thermostat.energyUsageBand()}`
 
-  document.querySelector('#psm-status')
-  document.querySelector('#energy-usage')
+    // Temperature Colour controller - Changing the Class
+    document.querySelector('#temp').className = thermostat.energyUsageBand();
+  })
 
-  document.querySelector('#up')
-  document.querySelector('#down')
-  document.querySelector('#reset')
-  document.querySelector('#psm')
+  // Up button selector, to increase the temperature
+  let upButton = document.querySelector('#up')
+  upButton.addEventListener('click', () =>{
+    thermostat.up();
+  });
+
+  // Down button selector, to decrease the temperature
+  let downButton = document.querySelector('#down')
+  downButton.addEventListener('click', () => {
+    thermostat.down();
+  })
+
+  // Reset button selector, to reset the temperature to default
+  let resetButton = document.querySelector('#reset')
+  resetButton.addEventListener('click', () => {
+    thermostat.resetTemperature();
+  })
+
+  // Toggle Power Saving Mode button selector, to Toggle the power saving mode
+  let powerSavingModeButton = document.querySelector('#psm')
+  powerSavingModeButton.addEventListener('click', () => {
+    thermostat.togglePowerSavingMode();
+  });
+
 
 })

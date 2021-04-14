@@ -74,6 +74,8 @@ class Thermostat {
   };
 }
 
-// let thermostat = new Thermostat();
-// thermostat.togglePowerSavingMode();
+let thermostat_test = new Thermostat();
+console.log(thermostat_test.temperature)
+thermostat_test.up()
+console.log(thermostat_test.temperature)
 // thermostat.togglePowerSavingMode();
