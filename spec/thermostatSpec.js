@@ -54,12 +54,13 @@ describe('Thermostat', function(){
       expect(thermostat.getCurrentTemperature()).toEqual(25);
     });
 
-    // it('can have a maximum temperature of 32', function() {
-    //   for (let i = 0; i < 13; i++) {
-    //     thermostat.up();
-    //   }
-    //   expect(thermostat.getCurrentTemperature()).toEqual(32);
-    // });
+    it('can have a maximum temperature of 32', function() {
+      thermostat.powerSavingModeOff(); 
+      for (let i = 0; i < 13; i++) {
+         thermostat.up();
+       }
+       expect(thermostat.getCurrentTemperature()).toEqual(32);
+     });
 
     describe('Power saving mode', function() {
       it('starts with power saving mode on', function() {
@@ -72,8 +73,8 @@ describe('Thermostat', function(){
       });
 
       it('can be turned back on again', function() {
-        thermostat.powerSavingModeOff();
-        thermostat.powerSavingModeOn();
+        thermostat.togglePowerSavingMode();
+        thermostat.togglePowerSavingMode();
         expect(thermostat.powerSavingMode).toBe(true);
       });
 

@@ -51,6 +51,13 @@ class Thermostat {
     this.powerSavingMode = true
   };
 
+  togglePowerSavingMode() {
+    if (this.powerSavingMode) { 
+      this.powerSavingModeOff();} else {
+        this.powerSavingModeOn;
+      } 
+  };
+
   resetTemperature() {
     this.temperature = this.DEFAULT_TEMPERATURE;
   };
