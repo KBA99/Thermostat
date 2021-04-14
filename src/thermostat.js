@@ -52,10 +52,11 @@ class Thermostat {
   };
 
   togglePowerSavingMode() {
-    if (this.powerSavingMode) { 
-      this.powerSavingModeOff();} else {
-        this.powerSavingModeOn;
-      } 
+    if (this.powerSavingMode === true) { 
+      this.powerSavingModeOff();
+    } else {
+      this.powerSavingModeOn();
+    } 
   };
 
   resetTemperature() {
@@ -72,3 +73,7 @@ class Thermostat {
     }
   };
 }
+
+// let thermostat = new Thermostat();
+// thermostat.togglePowerSavingMode();
+// thermostat.togglePowerSavingMode();
